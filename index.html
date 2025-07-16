@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Elden Ring Mood Board - With Background & Cards</title>
+
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="three-bg"></div>
+<div class="gold-dust-container"></div>
+
+<div class="quote-container" id="quote-container"></div> <!-- If you have quotes -->
+
+<div class="moodboard">
+  <div class="tile" data-title="Dragonlord Placidusax">
+    <img src="assets/images/dragonlord.jpeg" alt="Dragonlord" />
+  </div>
+  <div class="tile" data-title="Lands Between">
+    <img src="assets/images/landsbetween.jpeg" alt="Lands Between" />
+  </div>
+  <div class="tile" data-title="Consecrated Snowfield">
+    <img src="assets/images/snow.jpeg" alt="Snow" />
+  </div>
+  <div class="tile" data-title="Nokron, Eternal City">
+    <img src="assets/images/star.jpeg" alt="Star" />
+  </div>
+  <div class="tile" data-title="Malenia">
+    <img src="assets/images/Malenia.jpeg" alt="Malenia" />
+  </div>
+  <div class="tile" data-title="Farum Azula">
+    <img src="assets/images/Farum Azula.jpeg" alt="Farum Azula" />
+  </div>
+</div>
+
+<div class="map-link-container">
+  <a href="https://eldenring.wiki.fextralife.com/Interactive+Map" target="_blank" class="map-link-button">
+    View Full Elden Ring Interactive Map
+  </a>
+</div>
+
+<audio id="bg-music" loop muted>
+  <source src="assets/audio/background.mp3" type="audio/mpeg" />
+  Your browser does not support the audio element.
+</audio>
+
+<div style="text-align: center; margin: 2rem;">
+  <button id="music-toggle">Play Music</button>
+</div>
+
+<div class="video-embed">
+    <div class="video-banner">Elden Ring Edits</div>
+    <iframe 
+        src="https://www.youtube.com/embed/VBYFC2AD_io?rel=0&controls=1&modestbranding=1"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+    </iframe>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r150/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.2/dist/gsap.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
