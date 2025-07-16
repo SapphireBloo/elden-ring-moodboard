@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   }
 
+  // Initialize quotes cycling
   showNextQuote();
   setInterval(showNextQuote, 5000);
 
+  // GSAP animations for tiles
   gsap.from(".tile", {
     opacity: 0,
     y: 100,
@@ -44,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ease: "sine.inOut"
   });
 
+  // Three.js Setup
   const container = document.getElementById("three-bg");
   const scene = new THREE.Scene();
 
@@ -90,5 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+
+  // Rotating GIFs in bottom right
+  const gifs = [
+    'assets/gifs/your-first-gif.gif',
+    'assets/gifs/your-second-gif.gif',
+    'assets/gifs/your-third-gif.gif'
+  ];
+
+  let gifIndex = 0;
+  const gifImage = document.getElementById('rotating-gif');
+  const gifButton = document.getElementById('next-gif');
+
+  gifButton.addEventListener('click', () => {
+    gifIndex = (gifIndex + 1) % gifs.length;
+    gifImage.src = gifs[gifIndex];
   });
 });
