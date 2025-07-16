@@ -25,11 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   }
 
-  // Initialize quotes cycling
   showNextQuote();
   setInterval(showNextQuote, 5000);
 
-  // GSAP animations for tiles
   gsap.from(".tile", {
     opacity: 0,
     y: 100,
@@ -46,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ease: "sine.inOut"
   });
 
-  // Three.js Setup
   const container = document.getElementById("three-bg");
   const scene = new THREE.Scene();
 
@@ -95,19 +92,48 @@ document.addEventListener("DOMContentLoaded", () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
 
-  // Rotating GIFs in bottom right
   const gifs = [
-    'assets/gifs/your-first-gif.gif',
-    'assets/gifs/your-second-gif.gif',
-    'assets/gifs/your-third-gif.gif'
+    "assets/gifs/gif1.gif",
+    "assets/gifs/gif2.gif",
+    "assets/gifs/gif3.gif"
   ];
 
+  const gifImg = document.getElementById("rotating-gif");
   let gifIndex = 0;
-  const gifImage = document.getElementById('rotating-gif');
-  const gifButton = document.getElementById('next-gif');
 
-  gifButton.addEventListener('click', () => {
+  // Set initial gif explicitly (optional)
+  gifImg.src = gifs[gifIndex];
+
+  // Rotate gifs every 6 seconds with cache buster to force reload
+  setInterval(() => {
     gifIndex = (gifIndex + 1) % gifs.length;
-    gifImage.src = gifs[gifIndex];
-  });
+    gifImg.src = gifs[gifIndex] + '?t=' + new Date().getTime();
+    console.log("Rotated to:", gifs[gifIndex]);
+  }, 6000);
+
+  // ======= Falling Gold Flakes =======
+  const goldflakesContainer = document.querySelector(".goldflakes-container");
+  const flakesCount = 30;
+
+  for (let i = 0; i < flakesCount; i++) {
+    const flake = document.createElement("div");
+    flake.classList.add("goldflake");
+
+    // Random size between 3px and 7px
+    const size = Math.random() * 4 + 3;
+    flake.style.width = `${size}px`;
+    flake.style.height = `${size}px`;
+
+    // Random horizontal start position (0 - 100vw)
+    flake.style.left = `${Math.random() * 100}vw`;
+
+    // Random animation duration between 7s and 15s
+    const duration = Math.random() * 8 + 7;
+    flake.style.animationDuration = `${duration}s`;
+
+    // Random delay so flakes don't fall all at once
+    flake.style.animationDelay = `${Math.random() * duration}s`;
+
+    goldflakesContainer.appendChild(flake);
+  }
 });
