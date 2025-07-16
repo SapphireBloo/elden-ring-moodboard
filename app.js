@@ -28,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
   showNextQuote();
   setInterval(showNextQuote, 5000);
 
-  // GSAP animations for tiles
   gsap.from(".tile", {
     opacity: 0,
     y: 100,
@@ -45,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ease: "sine.inOut"
   });
 
-  // Three.js Setup
   const container = document.getElementById("three-bg");
   const scene = new THREE.Scene();
 
@@ -92,23 +90,5 @@ document.addEventListener("DOMContentLoaded", () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-
-  // Music toggle
-  const bgMusic = document.getElementById("bg-music");
-  const toggleBtn = document.getElementById("music-toggle");
-
-  bgMusic.muted = true;
-  toggleBtn.textContent = "Play Music";
-
-  toggleBtn.addEventListener("click", () => {
-    if (bgMusic.paused || bgMusic.muted) {
-      bgMusic.muted = false;
-      bgMusic.play();
-      toggleBtn.textContent = "Pause Music";
-    } else {
-      bgMusic.pause();
-      toggleBtn.textContent = "Play Music";
-    }
   });
 });
